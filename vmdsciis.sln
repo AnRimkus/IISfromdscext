@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "vmdsciis", "vmdsciis\vmdsciis.deployproj", "{CE69DA6F-1AC2-43F7-95A8-CADE070E95A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE69DA6F-1AC2-43F7-95A8-CADE070E95A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE69DA6F-1AC2-43F7-95A8-CADE070E95A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE69DA6F-1AC2-43F7-95A8-CADE070E95A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE69DA6F-1AC2-43F7-95A8-CADE070E95A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C72E2C2B-5D76-41C1-85CF-3DC97FD68BFD}
+	EndGlobalSection
+EndGlobal
