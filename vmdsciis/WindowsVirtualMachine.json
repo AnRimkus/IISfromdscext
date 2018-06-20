@@ -33,28 +33,42 @@
       "metadata": {
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
       }
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+      }
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Auto-generated token to access _artifactsLocation"
+      }
     }
   },
   "variables": {
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "OSDiskName": "osdiskforwindowssimple",
-    "nicName": "myVMNic",
+    "nicName": "dsciisVMNic",
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
     "vhdStorageType": "Standard_LRS",
-    "publicIPAddressName": "myPublicIP",
+    "publicIPAddressName": "dsciisPublicIP",
     "publicIPAddressType": "Dynamic",
     "vhdStorageContainerName": "vhds",
-    "vmName": "MyWindowsVM",
+    "vmName": "dsciisWindowsVM",
     "vmSize": "Standard_A2",
-    "virtualNetworkName": "MyVNET",
+    "virtualNetworkName": "dsciisVNET",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
     "vhdStorageAccountName": "[concat('vhdstorage', uniqueString(resourceGroup().id))]",
     "diagnosticsStorageAccountName": "[variables('vhdStorageAccountName')]",
-    "wadmetricsresourceid": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
+    "wadmetricsresourceid": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]",
+    "dsciisdscextArchiveFolder": "DSC",
+    "dsciisdscextArchiveFileName": "dsciisdscext.zip"
   },
   "resources": [
     {
@@ -480,6 +494,37 @@
             "protectedSettings": {
               "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
               "storageAccountKey": "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2016-01-01').keys[0].value]"
+            }
+          }
+        },
+        {
+          "name": "Microsoft.Powershell.DSC",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2016-03-30",
+          "dependsOn": [
+            "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
+          ],
+          "tags": {
+            "displayName": "dsciisdscext"
+          },
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.9",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+              "configuration": {
+                "url": "[concat(parameters('_artifactsLocation'), '/', variables('dsciisdscextArchiveFolder'), '/', variables('dsciisdscextArchiveFileName'))]",
+                "script": "dsciisdscext.ps1",
+                "function": "Main"
+              },
+              "configurationArguments": {
+                "nodeName": "[variables('vmName')]"
+              }
+            },
+            "protectedSettings": {
+              "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
             }
           }
         }

@@ -29,6 +29,7 @@
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="WindowsVirtualMachine.json" />
     <Content Include="WindowsVirtualMachine.parameters.json" />
+    <Content Include="DSC\dsciisdscext.ps1" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
