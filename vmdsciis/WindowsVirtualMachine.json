@@ -68,7 +68,10 @@
     "diagnosticsStorageAccountName": "[variables('vhdStorageAccountName')]",
     "wadmetricsresourceid": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]",
     "dsciisdscextArchiveFolder": "DSC",
-    "dsciisdscextArchiveFileName": "dsciisdscext.zip"
+    "dsciisdscextArchiveFileName": "dsciisdscext.zip",
+    "websitename": "MySite",
+    "sourcepath": "https://vhdstoragejmvq5cbgp23ba.blob.core.windows.net/task6/wikiHowFanPage.html",
+    "destinationpath": "C:\Scriptsara\wikiHowFanPage.html"
   },
   "resources": [
     {
@@ -520,7 +523,10 @@
                 "function": "Main"
               },
               "configurationArguments": {
-                "nodeName": "[variables('vmName')]"
+                "nodeName": "[variables('vmName')]",
+                "WebSiteName": "[variables('websitename')]",
+                "SourcePath": "[variables('sourcepath')]",
+                "DestinationPath": "[variables('destinationpath')]"
               }
             },
             "protectedSettings": {
