@@ -69,9 +69,9 @@
     "wadmetricsresourceid": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]",
     "dsciisdscextArchiveFolder": "DSC",
     "dsciisdscextArchiveFileName": "dsciisdscext.zip",
-    "websitename": "MySite",
-    "sourcepath": "https://vhdstoragejmvq5cbgp23ba.blob.core.windows.net/task6/wikiHowFanPage.html",
-    "destinationpath": "C:\Scriptsara\wikiHowFanPage.html"
+    "websitename": "wikiHowFanPage",
+    "sourcepath": "https://vhdstoragejmvq5cbgp23ba.blob.core.windows.net/task6/wikiHowFanPage.html"
+    //"destinationpath": "C:\\Scriptsara\\wikiHowFanPage.html"
   },
   "resources": [
     {
@@ -525,8 +525,8 @@
               "configurationArguments": {
                 "nodeName": "[variables('vmName')]",
                 "WebSiteName": "[variables('websitename')]",
-                "SourcePath": "[variables('sourcepath')]",
-                "DestinationPath": "[variables('destinationpath')]"
+                "SourcePath": "[variables('sourcepath')]"
+                //"DestinationPath": "[variables('destinationpath')]"
               }
             },
             "protectedSettings": {
