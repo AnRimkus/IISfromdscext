@@ -70,7 +70,7 @@
     "dsciisdscextArchiveFolder": "DSC",
     "dsciisdscextArchiveFileName": "dsciisdscext.zip",
     "websitename": "ara",
-    "sourcepath": "https://vhdstoragejmvq5cbgp23ba.blob.core.windows.net/task6/wikiHowFanPage.html"
+    //"sourcepath": "https://vhdstoragejmvq5cbgp23ba.blob.core.windows.net/task6/wikiHowFanPage.html"
     //"destinationpath": "C:\\Scriptsara\\wikiHowFanPage.html"
   },
   "resources": [

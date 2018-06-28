@@ -110,7 +110,7 @@ Node $nodeName
 				{
 					Protocol              = "HTTP"
 					Port                  = 84
-					HostName = "test2"
+					#HostName = "test2"
 				}
 				
 			)
