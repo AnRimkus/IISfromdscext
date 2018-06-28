@@ -70,7 +70,7 @@ Node $nodeName
 		}
 	  #>
 
-		# Create the new Website with HTTPS
+		# Create the new Website with HTTP
 		xWebsite NewWebsite
 		{
 			Ensure          = "Present"
@@ -81,22 +81,40 @@ Node $nodeName
 				MSFT_xWebBindingInformation
 				{
 					Protocol              = "HTTP"
-					Port                  = 8443
+					Port                  = 83
 					#CertificateThumbprint = "71AD93562316F21F74606F1096B85D66289ED60F"
 					#CertificateStoreName  = "WebHosting"
-					HostName = "test1"
+					#HostName = "test1"
 				}
+				<#
 				MSFT_xWebBindingInformation
 				{
 					Protocol              = "HTTP"
-					Port                  = 8444
+					Port                  = 82
 					#CertificateThumbprint = "DEDDD963B28095837F558FE14DA1FDEFB7FA9DA7"
 					#CertificateStoreName  = "MY"
 					HostName = "test2"
 				}
+				#>
 			)
-			#DependsOn       = "[File]WebContent"
-
+			}
+	  
+			xWebsite NewWebsite2
+		{
+			Ensure          = "Present"
+			Name            = $WebSiteName + "2"
+			State           = "Started"
+			PhysicalPath    = "C:\Scriptsara2"
+			BindingInfo     = @(
+				MSFT_xWebBindingInformation
+				{
+					Protocol              = "HTTP"
+					Port                  = 84
+					HostName = "test2"
+				}
+				
+			)
+			
    <# This commented section represents an example configuration that can be updated as required.
 	
 	WindowsFeature WebManagementConsole

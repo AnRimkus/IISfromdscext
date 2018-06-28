@@ -69,7 +69,7 @@
     "wadmetricsresourceid": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]",
     "dsciisdscextArchiveFolder": "DSC",
     "dsciisdscextArchiveFileName": "dsciisdscext.zip",
-    "websitename": "wikiHowFanPage",
+    "websitename": "ara",
     "sourcepath": "https://vhdstoragejmvq5cbgp23ba.blob.core.windows.net/task6/wikiHowFanPage.html"
     //"destinationpath": "C:\\Scriptsara\\wikiHowFanPage.html"
   },
