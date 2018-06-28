@@ -7,12 +7,13 @@ Param (
 		# Name of the website to create
 		[Parameter(Mandatory)]
 		[ValidateNotNullOrEmpty()]
-		[String]$WebSiteName,
-		# Source Path for Website content
+		[String]$WebSiteName
+	<#	
+	# Source Path for Website content
 		[Parameter(Mandatory)]
 		[ValidateNotNullOrEmpty()]
 		[String]$SourcePath
-		
+	#>	
 	<# Destination path for Website content
 		[Parameter(Mandatory)]
 		[ValidateNotNullOrEmpty()]
